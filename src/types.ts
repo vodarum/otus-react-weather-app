@@ -1,4 +1,4 @@
-type Forecast = {
+type ResponseForecast = {
   cod: string;
   message: number;
   cnt: number;
@@ -82,15 +82,15 @@ type WeatherInfoForDayShort = {
   weatherCondition: string;
 };
 
-type ForecastProps = {
-  title: string;
-  data: Array<WeatherInfoForDayShort>;
+type CityForecast = {
+  cityName: string;
+  forecast: Array<WeatherInfoForDayShort>;
 };
 
 export type {
+  CityForecast,
   DayShortName,
-  Forecast,
-  WeatherInfoForDayShort,
+  ResponseForecast,
   WeatherInfoForDay,
-  ForecastProps,
+  WeatherInfoForDayShort,
 };

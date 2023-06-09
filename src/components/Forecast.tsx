@@ -1,20 +1,20 @@
 import React, { FC } from "react";
-import { ForecastProps } from "../types";
+import { CityForecast } from "../types";
 import ForecastDay from "./ForecastDay";
 
-const Forecast: FC<ForecastProps> = ({ title, data }) => (
+const Forecast: FC<CityForecast> = ({ cityName, forecast }) => (
   <>
-    <h1>{title}</h1>
+    <h1>{cityName}</h1>
 
     <div className="forecast">
-      {data.map((weatherInfo) => (
+      {forecast.map(({ date, dayTemp, nightTemp, icon, weatherCondition }) => (
         <ForecastDay
-          key={weatherInfo.date.formatDate}
-          date={weatherInfo.date}
-          dayTemp={weatherInfo.dayTemp}
-          nightTemp={weatherInfo.nightTemp}
-          icon={weatherInfo.icon}
-          weatherCondition={weatherInfo.weatherCondition}
+          key={date.formatDate}
+          date={date}
+          dayTemp={dayTemp}
+          nightTemp={nightTemp}
+          icon={icon}
+          weatherCondition={weatherCondition}
         />
       ))}
     </div>

@@ -1,4 +1,9 @@
-import { Forecast, WeatherInfoForDay, WeatherInfoForDayShort } from "../types";
+import {
+  CityForecast,
+  ResponseForecast,
+  WeatherInfoForDay,
+  WeatherInfoForDayShort,
+} from "../types";
 import {
   getFormatDate,
   getDayShortName,
@@ -9,7 +14,7 @@ import { capitalize } from "../libs/string.lib";
 const WEATHER_URL = "https://api.openweathermap.org/data/2.5/forecast";
 const WEATHER_API_KEY = "1cf44d73b10a208539e8d4267c92ac9f";
 
-const parseResponseForecastToWeatherInfo = (
+const getShortForecast = (
   forecastList: Array<WeatherInfoForDay>
 ): Array<WeatherInfoForDayShort> => {
   const result: Array<WeatherInfoForDayShort> = [];
@@ -107,20 +112,23 @@ const parseResponseForecastToWeatherInfo = (
   return result;
 };
 
-const getWeatherInfoByCity = async (
-  city: string
-): Promise<Array<WeatherInfoForDayShort>> => {
+const getForecastByCityName = async (
+  cityName: string
+): Promise<CityForecast> => {
   const response = await fetch(
-    `${WEATHER_URL}?q=${city}&appid=${WEATHER_API_KEY}&units=metric&lang=ru`
+    `${WEATHER_URL}?q=${cityName}&appid=${WEATHER_API_KEY}&units=metric&lang=ru`
   );
 
   if (!response.ok) {
     throw new Error(`${response.status}`);
   }
 
-  const forecast = (await response.json()) as Forecast;
+  const { city, list } = (await response.json()) as ResponseForecast;
 
-  return parseResponseForecastToWeatherInfo(forecast.list);
+  return {
+    cityName: city.name,
+    forecast: getShortForecast(list),
+  };
 };
 
-export default getWeatherInfoByCity;
+export default getForecastByCityName;
