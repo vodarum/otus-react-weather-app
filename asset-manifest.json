@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/otus-react-weather-app/static/css/main.c38df5e8.css",
-    "main.js": "/otus-react-weather-app/static/js/main.c12ae978.js",
+    "main.js": "/otus-react-weather-app/static/js/main.7c5ae697.js",
     "index.html": "/otus-react-weather-app/index.html",
     "main.c38df5e8.css.map": "/otus-react-weather-app/static/css/main.c38df5e8.css.map",
-    "main.c12ae978.js.map": "/otus-react-weather-app/static/js/main.c12ae978.js.map"
+    "main.7c5ae697.js.map": "/otus-react-weather-app/static/js/main.7c5ae697.js.map"
   },
   "entrypoints": [
     "static/css/main.c38df5e8.css",
-    "static/js/main.c12ae978.js"
+    "static/js/main.7c5ae697.js"
   ]
 }
