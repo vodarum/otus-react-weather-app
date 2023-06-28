@@ -1,13 +1,238 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  min-width: 320px;
+}
+
+.header {
+  padding: 24px 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.logo-wrapper {
+  display: inline-block;
+}
+
+.logo {
+  max-width: 40px;
+  vertical-align: bottom;
+}
+
+.main {
+  padding: 30px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.spinner {
+  display: inline-block;
+  border: 3px dashed #cacaca;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner_outer {
+  width: 50px;
+  height: 50px;
+  animation: spin-right 4s infinite linear;
+}
+
+.spinner_inner {
+  width: 40px;
+  height: 40px;
+  animation: spin-left 2s infinite linear;
+}
+
+@keyframes spin-right {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin-left {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) rotate(-90deg) scale(0.95);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(-180deg) scale(0.85);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(-270deg) scale(0.95);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg) scale(1);
+  }
+}
+
+/* .btn {
+	display: inline-block;
+	padding: 4px 8px;
+	background-color: #eee;
+	border-radius: 4px;
+	text-decoration: none;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.btn:hover {
+	background-color: #e9e9e9;
+}
+
+.btn_to-main {
+	margin-bottom: 30px;
+} */
+
+.search-form {
+  margin-bottom: 40px;
+  display: flex;
+  gap: 4px;
+}
+
+.search-form__input {
+  min-width: 206px;
+}
+
+.search-form__input:focus {
+  outline: 1px solid #cacaca;
+}
+
+.search-form__btn {
+  cursor: pointer;
+}
+
+.search-form__btn:hover {
+  background-color: #e9e9e9;
+}
+
+.search-form__input,
+.search-form__btn {
+  padding: 6px 12px;
+  border: 1px solid #cacaca;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.search-history {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-history__item {
+  width: fit-content;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.search-history__item:hover {
+  text-decoration: underline;
+}
+
+.forecast {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.forecast__item {
+  flex: 0 1 100%;
+}
+
+@media (min-width: 320px) {
+  .forecast__item {
+    flex: 0 1 45%;
+  }
+}
+
+@media (min-width: 575px) {
+  .forecast__item {
+    flex: 0 1 30%;
+  }
+}
+
+@media (min-width: 992px) {
+  .forecast {
+    flex-wrap: nowrap;
+  }
+
+  .forecast__item {
+    flex: 0 1 15%;
+  }
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.forecast-day__icon {
+  width: 50px;
+}
+
+.forecast-day__name {
+  font-size: 130%;
+}
+
+.forecast-day__name,
+.forecast-day__temp_day {
+  font-weight: 700;
+}
+
+.forecast-day__date,
+.forecast-day__temp_night,
+.forecast-day__condition {
+  color: gray;
+}
+
+.forecast-day__date,
+.forecast-day__temp_night {
+  font-size: 90%;
+}
+
+.forecast-day__condition {
+  font-size: 75%;
 }
